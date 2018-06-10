@@ -1,0 +1,72 @@
+
+    <nav class="navbar navbar-light">
+        <div class="container justify-content-center image-fluid">
+                <h1>eat.da.burger</h1>
+        </div>
+    </nav>
+    <div class="container">
+        <div class="row no-gutters">
+            <div class="col col-12 text-center mains">
+                <img src="/assets/img/burger.svg">
+                <h1>BURGER</h1>
+                <P><small>PLEASE LET US KNOW WHAT BURGER YOU WANT</small></P>
+            </div>
+            <form class="create-form" action="/" method="POST">
+
+              <div class="form-group">
+                <input type="text" id="ca" name="burger_name">
+              </div>
+              
+              <button class="btn-primary btnmain" type="submit">Submit Burger</button>
+            </form>
+        </div>
+
+        
+        <div class="row no-gutters content">
+            <div class="text-left col col-6">
+              <h1>Eat Burger</h1>
+                <ul>
+                  {{#each burgers}}
+                    {{#if this.devoured}}
+                      <li class="burgerBox">
+                        <form>
+                          <input type="hidden" name="devoured" value="true">
+                          <button class="btn-primary" type="submit" ><i class="fas fa-utensils"></i></button>
+                        </form>
+                        {{this.id}}
+                        {{this.burger_name}}
+                      </li>
+                    {{/if}}
+                  {{/each}}
+			          </ul>
+            </div>
+
+            <div class="text-right col col-6">
+                <h1>Digested</h1>
+                <ul>
+                  {{#each burgers}}
+                    {{#if this.devoured}}
+                      <li class ="devoredBurgers">
+                        {{this.burger_name}}
+                        {{this.id}}
+
+                        <form>
+                          <input type="hidden" name="devoured" class="newdevour" value="false">
+                          <button class="btn-primary delete-burger newdevour" type="submit" data-id="{{this.id}}"><i class="fas fa-trash-alt"></i></button>
+                        </form>
+
+                      </li>
+                    {{/if}}
+                  {{/each}}
+			          </ul>
+            </div>
+        </div>
+            
+    </div>
+
+
+  
+
+
+
+    
